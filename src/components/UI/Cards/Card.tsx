@@ -2,11 +2,14 @@ import React from "react";
 import "tailwindcss";
 
 type valueObject = {
-  image: string;
+  id: number;
+  imageUrl: string;
   title: string;
   description: string;
   price: number;
   colors: string[];
+  badge?: string;
+  onClick?: () => void;
 };
 
 type CardProps = {
@@ -23,7 +26,7 @@ const Card: React.FC<CardProps> = ({ value }) => {
       <div className="w-full h-full">
         <img
           className="w-[70%] mt-3 mx-auto"
-          src={value.image}
+          src={value.imageUrl}
           alt={value.title}
         />
       </div>
