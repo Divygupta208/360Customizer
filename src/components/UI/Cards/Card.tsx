@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({ value }) => {
         />
       </div>
       <div className="flex flex-col items-start md:ml-2 text-ellipsis px-4 py-2 w-[100%] h-full">
-        <h6 className="font-bold max-w-[200px] truncate text-ellipsis text-start ">
+        <h6 className="font-bold max-w-[200px] truncate text-start">
           {value.title}
         </h6>
         <p className="font-light text-sm sm:text-sm md:text-sm lg:text-[15px] text-gray-500">
