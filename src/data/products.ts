@@ -45,5 +45,6 @@ export const Products: Product[] = [
     description: "Realme 7 with Tensor G2 chip.",
     price: 59999,
     colors: ["#954C2E", "#FE7743", "#BE3D2A"],
+    badge: "sale",
   },
 ];

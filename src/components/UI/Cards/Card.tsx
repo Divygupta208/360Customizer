@@ -18,48 +18,47 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ value }) => {
   const trimmedDescription = (val: string): string => {
-    return val.length > 20 ? `${val.slice(0, 20)}...` : val;
+    return val.length > 40 ? `${val.slice(0, 40)}...` : val;
   };
 
   return (
-    <div className="bg-white flex flex-col justify-between text-black border-2 border-black/10 rounded-2xl shadow-gray-600 shadow-2xl min-h-[320px] max-w-[300px] sm:min-h-[410px] sm:w-[40vw] md:w-[40vw] lg:w-[20vw] relative p-4">
+    <div className="relative bg-white flex flex-col justify-between text-black border-2 border-black/10 rounded-2xl shadow-lg min-h-[380px] max-w-[300px] p-4 sm:w-[40vw] lg:w-[20vw] transition-transform hover:scale-[1.03] duration-300">
       {value.badge && (
-        <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-md shadow-md z-10">
+        <div className="absolute top-1 right-1 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded shadow-md z-10">
           {value.badge}
-        </span>
+        </div>
       )}
 
-      <div className="flex justify-center">
+      <div className="aspect-[4/3] w-full">
         <img
-          className="w-[70%] mt-2 object-contain"
+          className="object-cover w-full h-full rounded-md"
           src={value.imageUrl}
           alt={value.title}
         />
       </div>
 
-      <div className="flex flex-col gap-2 mt-4">
-        <h6 className="font-bold max-w-full truncate">{value.title}</h6>
-
-        <p className="font-light text-sm text-gray-500">
+      <div className="flex flex-col gap-2 mt-3">
+        <h6 className="font-bold text-base truncate max-w-full">
+          {value.title}
+        </h6>
+        <p className="text-sm text-gray-600 truncate">
           {trimmedDescription(value.description)}
         </p>
-
-        <div className="bg-blue-200 px-2 py-1 rounded w-fit">
+        <div className="bg-blue-100 text-blue-700 w-fit px-2 py-1 rounded text-sm font-medium">
           ${value.price}
         </div>
 
-        <div className="flex gap-2 mt-2">
-          {value.colors.map((color) => (
-            <div
-              key={color}
-              className="w-3 h-4 rounded-full border-2 border-gray-500"
-              style={{ backgroundColor: color }}
-            ></div>
-          ))}
-        </div>
-
-        <div className="mt-4">
-          <CustomButton label="Buy Now" onClick={value.onClick || (() => {})} />
+        <div className="flex items-center justify-between mt-3">
+          <div className="flex gap-2">
+            {value.colors.map((color) => (
+              <div
+                key={color}
+                className="w-4 h-4 rounded-full border border-gray-400"
+                style={{ backgroundColor: color }}
+              ></div>
+            ))}
+          </div>
+          <CustomButton label="Buy Now" />
         </div>
       </div>
     </div>
