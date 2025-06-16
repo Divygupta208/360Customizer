@@ -9,7 +9,8 @@ export type Product = {
 export const Products: Product[] = [
   {
     image: "public/p1.jpeg",
-    title: "iPhone 14",
+    title:
+      "iPhoneddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd 14",
     description: "Apple iPhone 14 with A15 Bionic chip.",
     price: 79999,
     colors: ["#954C2E", "#254D70", "#EFE4D2"],
@@ -17,7 +18,8 @@ export const Products: Product[] = [
   {
     image: "/p2.jpeg",
     title: "iphone 15 pro",
-    description: "Samsung Galaxy S23 with Snapdragon 8.",
+    description:
+      "Samsung Galaxy S23 with Snapdragon 8.6 dhasbjkhasfbkjnxvhoihiaf",
     price: 74999,
     colors: ["#71C0BB", "#254D70", "#483AA0"],
   },
