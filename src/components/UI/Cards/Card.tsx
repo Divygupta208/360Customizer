@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ value }) => {
   };
 
   return (
-    <div className="bg-white flex gap-2 flex-col items-center text-black border-2 border-black/10 rounded-2xl shadow-gray-600 shadow-2xl min-h-[310px] max-w-[300px] sm:min-h-[360px] sm:h-[310px] sm:w-[40vw] lg:h-[60vh] lg:w-[20vw] md:min-h-[360px] md:w-[40vw]">
+    <div className="bg-white flex gap-2 flex-col items-center text-black border-2 border-black/10 rounded-2xl shadow-gray-600 shadow-2xl min-h-[310px] max-w-[300px] sm:min-h-[360px] sm:h-[310px] sm:w-[40vw] lg:h-[50vh] lg:w-[20vw] md:min-h-[360px] md:w-[40vw]">
       <div className="w-full h-full">
         <img
           className="w-[70%] mt-3 mx-auto"
