@@ -2,11 +2,14 @@ import React from "react";
 import Card from "./UI/Cards/Card";
 
 type Product = {
-  image: string;
+  id: number;
+  imageUrl: string;
   title: string;
   description: string;
   price: number;
   colors: string[];
+  badge?: string;
+  onClick?: () => void;
 };
 
 type SampleCardProps = {
