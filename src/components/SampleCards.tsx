@@ -18,9 +18,9 @@ type SampleCardProps = {
 
 const SampleCards: React.FC<SampleCardProps> = ({ products }) => {
   return (
-    <div className="grid gap-7 lg:gap-20 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-      {products.map((item) => {
-        return <Card value={item} />;
+    <div className="grid gap-7 ml-32 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
+      {products.map((item, key) => {
+        return <Card value={item} key={item.id} />;
       })}
     </div>
   );

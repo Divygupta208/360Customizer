@@ -1,11 +1,10 @@
 import "./App.css";
-import SampleCards from "./components/SampleCards";
+import ProductListing from "./components/Pages/ProductListing";
 import { Products } from "./data/products";
-
 function App() {
   return (
     <>
-      <SampleCards products={Products} />
+      <ProductListing products={Products} />
     </>
   );
 }
