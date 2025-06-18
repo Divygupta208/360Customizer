@@ -13,7 +13,10 @@
     "@tailwindcss/vite": "^4.1.10",
     "axios": "^1.10.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-spinners": "^0.17.0",
+    "react-star-ratings": "^2.3.0",
+    "react-stars": "^2.2.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
