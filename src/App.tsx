@@ -1,11 +1,10 @@
 import "./App.css";
-import SampleCards from "./components/SampleCards";
-import { Products } from "./data/products";
+import ProductListing from "./components/Pages/ProductListing";
 
 function App() {
   return (
     <>
-      <SampleCards products={Products} />
+      <ProductListing />
     </>
   );
 }
