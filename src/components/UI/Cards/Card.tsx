@@ -1,7 +1,7 @@
 import React from "react";
 import CustomButton from "../Button/Button";
 import type { Product } from "../../../data/products";
-import ReactStars from "react-stars";
+// import ReactStars from "react-stars";
 
 type CardProps = {
   value: Product;
@@ -43,12 +43,12 @@ const Card: React.FC<CardProps> = ({ value }) => {
           <div className="flex gap-2">
             {value.rating && (
               <div className="font-semibold flex items-center text-slate-400">
-                <ReactStars
+                {/* <ReactStars
                   value={value.rating.rate}
                   count={5}
                   size={16}
                   color2={"black"}
-                />
+                /> */}
                 <div className="text-sm ">({value.rating.count})</div>
               </div>
             )}
