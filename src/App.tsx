@@ -1,11 +1,13 @@
 import "./App.css";
-import SampleCards from "./components/SampleCards";
-import { Products } from "./data/products";
+import InquiryForm from "./components/Forms/InquiryForm";
+import ProductListing from "./components/Pages/ProductListing";
+// import ProductListing from "./components/Pages/ProductListing";
 
 function App() {
   return (
     <>
-      <SampleCards products={Products} />
+      {/* <ProductListing /> */}
+      <InquiryForm />
     </>
   );
 }
