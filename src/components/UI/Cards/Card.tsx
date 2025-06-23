@@ -1,7 +1,6 @@
 import React from "react";
 import CustomButton from "../Button/Button";
 import type { Product } from "../../../data/products";
-// import ReactStars from "react-stars";
 
 type CardProps = {
   value: Product;

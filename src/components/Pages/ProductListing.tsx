@@ -4,6 +4,7 @@ import CustomButton from "../UI/Button/Button";
 import type { Product } from "../../data/products";
 import { _get } from "../../api/ProductServices/services";
 import { ClipLoader } from "react-spinners";
+import GenericCard from "../UI/Cards/ResuableCard";
 
 const ProductListing = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -164,7 +165,7 @@ const ProductListing = () => {
         <div className="grid gap-6 xl:grid-cols-4  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 place-items-center">
           {displayProducts.length !== 0 ? (
             displayProducts.map((item) => {
-              return <Card value={item} key={item.id} />;
+              return <GenericCard data={item} type="product" key={item.id} />;
             })
           ) : (
             <h1 className=" font-bold text-2xl text-center">
