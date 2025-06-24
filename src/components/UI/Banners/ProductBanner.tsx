@@ -1,6 +1,5 @@
-import React from "react";
 import { GrTest } from "react-icons/gr";
-import { LuEarthLock, LuHeartHandshake } from "react-icons/lu";
+import { LuHeartHandshake } from "react-icons/lu";
 import { MdVerifiedUser } from "react-icons/md";
 
 const ProductBanner = () => {
