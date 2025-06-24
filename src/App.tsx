@@ -9,6 +9,7 @@ import SignupPage from "./components/Pages/Home/SignupPage";
 import Dashboard from "./components/Pages/Home/Dashboard";
 import ProtectedRoute from "./components/Pages/Layout/ProtectedRoute";
 import UserProfile from "./components/Pages/User/UserProfile";
+import NotFound from "./components/UI/NotFound/notfound";
 
 function App() {
   // const user: ProfileCardData = {
@@ -36,6 +37,7 @@ function App() {
     <>
       <Breadcrumbs />
       <Routes>
+        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Navigate to={"/login"} replace />} />
         <Route path={"/login"} element={<SignupPage />} />
         <Route element={<ProtectedRoute />}>
