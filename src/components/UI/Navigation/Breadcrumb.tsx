@@ -1,4 +1,3 @@
-// src/components/Navigation/Breadcrumbs.tsx
 import { Link, useLocation } from "react-router-dom";
 
 const Breadcrumbs = () => {
@@ -7,7 +6,7 @@ const Breadcrumbs = () => {
 
   return (
     <nav className="text-sm p-2 text-gray-600">
-      <Link to="/">Home</Link>
+      {/* <Link to="/">Home</Link> */}
       {pathnames.map((value, index) => {
         const to = `/${pathnames.slice(0, index + 1).join("/")}`;
         const isLast = index === pathnames.length - 1;

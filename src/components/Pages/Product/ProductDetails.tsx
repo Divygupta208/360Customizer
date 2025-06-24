@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router";
 import { fetchProductInfo } from "../../../api/ProductServices/services";
 import type { Product } from "../../../data/products";
-import { FaRegCircle } from "react-icons/fa";
+// import { FaRegCircle } from "react-icons/fa";
 import AddToCartBar from "../../UI/Bars/AddToCartBar";
 import ProductBanner from "../../UI/Banners/ProductBanner";
 import ProductInfo from "./ProductInfo";

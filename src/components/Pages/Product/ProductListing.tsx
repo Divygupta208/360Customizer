@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import CustomButton from "../UI/Button/Button";
-import type { Product } from "../../data/products";
-import { _get, fetchProducts } from "../../api/ProductServices/services";
+import CustomButton from "../../UI/Button/Button";
+import type { Product } from "../../../data/products";
+import { _get, fetchProducts } from "../../../api/ProductServices/services";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router";
-import ReusableCard from "../UI/Cards/ResuableCard";
+import ReusableCard from "../../UI/Cards/ResuableCard";
 
 const ProductListing = () => {
   const [products, setProducts] = useState<Product[]>([]);

@@ -11,11 +11,11 @@ export type ProductCardData = {
 
 export type ProfileCardData = {
   name: string;
-  profilePicture: string;
-  role: string;
-  organisation: string;
-  bio: string;
-  socialLinks: {
+  profilePicture?: string;
+  role?: string;
+  organisation?: string;
+  bio?: string;
+  socialLinks?: {
     social: string;
     logo: React.ReactNode;
     link: string;
