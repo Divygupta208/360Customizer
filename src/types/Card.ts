@@ -1,6 +1,6 @@
 export type ProductCardData = {
   id: number;
-  image: string;
+  image: string | string[];
   title: string;
   description: string;
   price: number;

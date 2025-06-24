@@ -1,7 +1,10 @@
 import "./App.css";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import type { ProfileCardData } from "./types/Card";
-import ReusableCard from "./components/UI/Cards/ResuableCard";
+import ProductListing from "./components/Pages/ProductListing";
+import { Route, Routes } from "react-router";
+import ProductDetails from "./components/Pages/ProductDetails/ProductDetails";
+import Breadcrumbs from "./components/UI/Navigation/Breadcrumb";
 
 function App() {
   const user: ProfileCardData = {
@@ -27,8 +30,13 @@ function App() {
 
   return (
     <>
-      {/* <ProductListing /> */}
-      <ReusableCard data={user} type={"profile"} />
+      <Breadcrumbs />
+      <Routes>
+        <Route path="/products" element={<ProductListing />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
+      </Routes>
+
+      {/* <ReusableCard data={user} type={"profile"} /> */}
     </>
   );
 }

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Card from "../UI/Cards/Card";
 import CustomButton from "../UI/Button/Button";
 import type { Product } from "../../data/products";
-import { _get } from "../../api/ProductServices/services";
+import { _get, fetchProducts } from "../../api/ProductServices/services";
 import { ClipLoader } from "react-spinners";
-import GenericCard from "../UI/Cards/ResuableCard";
+import { useNavigate } from "react-router";
+import ReusableCard from "../UI/Cards/ResuableCard";
 
 const ProductListing = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -15,6 +15,7 @@ const ProductListing = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [displayProducts, setDisplayProducts] = useState(products);
   const [failure, setFailure] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -25,8 +26,8 @@ const ProductListing = () => {
 
     try {
       //   throw "error";
-      const response = await _get("/products");
-      const data: Product[] = await response.data;
+      // const response = await _get("/products");
+      const data: Product[] = await fetchProducts();
       setProducts(data);
       setDisplayProducts(data);
       setFailure(false);
@@ -91,6 +92,10 @@ const ProductListing = () => {
       sortedProducts.sort((a, b) => b.price - a.price);
     }
     setDisplayProducts(sortedProducts);
+  };
+
+  const handleDisplayProductDetails = (productId: any) => {
+    navigate(`${productId}`);
   };
 
   return (
@@ -165,7 +170,14 @@ const ProductListing = () => {
         <div className="grid gap-6 xl:grid-cols-4  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 place-items-center">
           {displayProducts.length !== 0 ? (
             displayProducts.map((item) => {
-              return <GenericCard data={item} type="product" key={item.id} />;
+              return (
+                <ReusableCard
+                  data={item}
+                  type="product"
+                  key={item.id}
+                  onClick={() => handleDisplayProductDetails(item.id)}
+                />
+              );
             })
           ) : (
             <h1 className=" font-bold text-2xl text-center">
