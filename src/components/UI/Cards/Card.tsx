@@ -1,36 +1,67 @@
 import React from "react";
-import "tailwindcss";
-
-type valueObject = {
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-  colors: string[];
-};
+import CustomButton from "../Button/Button";
+import type { Product } from "../../../data/products";
 
 type CardProps = {
-  value: valueObject;
+  value: Product;
 };
 
 const Card: React.FC<CardProps> = ({ value }) => {
+  const trimmedDescription = (val: string): string => {
+    return val.length > 40 ? `${val.slice(0, 40)}...` : val;
+  };
+
   return (
-    <div className="bg-white flex gap-3 flex-col items-center text-black border-2 border-black/10 rounded-2xl shadow-gray-600 shadow-2xl h-[60vh] sm:h-[60vh] sm:w-[40vw] lg:h-[60vh] lg:w-[20vw] md:w-[40vw]">
-      <img className="w-[30vh] mt-3" src={value.image} />
-      <div className="flex flex-col items-start md:ml-5">
-        <h6 className="font-bold p-2">{value.title}</h6>
-        <p className="font-light text-sm sm:text-sm md:text-sm lg:text-[15px] text-gray-500">
-          {value.description}
+    <div className="relative bg-white flex flex-col justify-between text-black border-2 border-black/10 rounded-2xl shadow-lg min-h-[380px] max-w-[300px] min-w-[300px] p-4 sm:w-[40vw] lg:w-[20vw] transition-transform hover:scale-[1.03] hover:shadow-2xl duration-300">
+      {value.badge && (
+        <div className="absolute top-1 right-1 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded shadow-md z-10">
+          {value.badge}
+        </div>
+      )}
+
+      <div className="aspect-[4/3] w-full overflow-hidden rounded-md">
+        <img
+          className="object-contain w-full h-full"
+          src={value.image}
+          alt={value.title}
+        />
+      </div>
+
+      <div className="flex flex-col gap-2 mt-3">
+        <h6 className="font-bold text-base truncate max-w-full">
+          {value.title}
+        </h6>
+        <p className="text-sm text-gray-600 truncate">
+          {trimmedDescription(value.description)}
         </p>
-        <div className="bg-blue-200 w-30 rounded">${value.price}</div>
-        <div className="flex mt-5 gap-2">
-          {value.colors.map((color) => (
-            <div
-              key={color}
-              className="w-5 h-5 rounded-full border-2 border-gray-500"
-              style={{ backgroundColor: color }}
-            ></div>
-          ))}
+        <div className="bg-blue-100 text-blue-700 w-fit px-2 py-1 rounded text-sm font-medium">
+          ${value.price}
+        </div>
+
+        <div className="flex items-center justify-between mt-3">
+          <div className="flex gap-2">
+            {value.rating && (
+              <div className="font-semibold flex items-center text-slate-400">
+                {/* <ReactStars
+                  value={value.rating.rate}
+                  count={5}
+                  size={16}
+                  color2={"black"}
+                /> */}
+                <div className="text-sm ">({value.rating.count})</div>
+              </div>
+            )}
+
+            {value.colors &&
+              value.colors.map((color) => (
+                <div
+                  key={color}
+                  className="w-4 h-4 rounded-full border border-gray-400"
+                  style={{ backgroundColor: color }}
+                ></div>
+              ))}
+          </div>
+          <CustomButton label="Buy Now" className="bg-black text-white p-2" />
         </div>
       </div>
     </div>
