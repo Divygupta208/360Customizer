@@ -5,19 +5,28 @@ import type { ProductCardData, ProfileCardData } from "../../../types/Card";
 
 type ProductCardProps = {
   type: "product";
-  data?: ProductCardData;
-  onClick?: () => void;
+  data: ProductCardData;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+
+  addProductToCart?: (product: ProductCardData) => void;
 };
 
 type ProfileCardProps = {
   type: "profile";
-  data?: ProfileCardData;
-  onClick?: () => void;
+  data: ProfileCardData;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+
+  addProductToCart?: (product: ProductCardData) => void;
 };
 
 type CardProps = ProductCardProps | ProfileCardProps;
 
-const ReusableCard: React.FC<CardProps> = ({ type, data, onClick }) => {
+const ReusableCard: React.FC<CardProps> = ({
+  type,
+  data,
+  onClick,
+  addProductToCart,
+}) => {
   if (type === "product") {
     return (
       <div
@@ -33,14 +42,14 @@ const ReusableCard: React.FC<CardProps> = ({ type, data, onClick }) => {
         <div className="aspect-[4/3] w-full overflow-hidden rounded-md">
           <img
             className="object-contain w-full h-full"
-            src={data?.image}
+            src={Array.isArray(data?.image) ? data.image[0] : data?.image}
             alt={data?.title}
           />
         </div>
 
         <div className="flex flex-col gap-2 mt-3">
-          <h6 className="font-bold text-base truncate">{data.title}</h6>
-          <p className="text-sm text-gray-600 truncate">{data.description}</p>
+          <h6 className="font-bold text-base truncate">{data?.title}</h6>
+          <p className="text-sm text-gray-600 truncate">{data?.description}</p>
           <div className="bg-blue-100 text-blue-700 w-fit px-2 py-1 rounded text-sm font-medium">
             ${data?.price}
           </div>
@@ -60,7 +69,11 @@ const ReusableCard: React.FC<CardProps> = ({ type, data, onClick }) => {
                 ></div>
               ))}
             </div>
-            <CustomButton label="Buy Now" className="bg-black text-white p-2" />
+            <CustomButton
+              label="Buy Now"
+              className="bg-black text-white p-2"
+              onClick={() => addProductToCart?.(data)}
+            />
           </div>
         </div>
       </div>
