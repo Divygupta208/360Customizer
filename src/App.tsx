@@ -7,9 +7,10 @@ import ProductDetails from "./components/Pages/Product/ProductDetails";
 import Breadcrumbs from "./components/UI/Navigation/Breadcrumb";
 import SignupPage from "./components/Pages/Home/SignupPage";
 import Dashboard from "./components/Pages/Home/Dashboard";
-import ProtectedRoute from "./components/Pages/Layout/ProtectedRoute";
+import ProtectedRoute from "./components/Pages/RouteProtection/ProtectedRoute";
 import UserProfile from "./components/Pages/User/UserProfile";
-import NotFound from "./components/UI/NotFound/notfound";
+import NotFound from "./components/UI/NotFound/NotFound";
+import ProductCart from "./components/Pages/Product/ProductCart";
 
 function App() {
   // const user: ProfileCardData = {
@@ -35,7 +36,7 @@ function App() {
 
   return (
     <>
-      <Breadcrumbs />
+      {/* <Breadcrumbs /> */}
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Navigate to={"/login"} replace />} />
@@ -44,6 +45,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<UserProfile />} />
         </Route>
+        <Route path="/cart" element={<ProductCart />} />
         <Route path="/products" element={<ProductListing />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
       </Routes>

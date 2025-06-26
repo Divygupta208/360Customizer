@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import { fetchProductInfo } from "../../../api/ProductServices/services";
 import type { Product } from "../../../data/products";
 // import { FaRegCircle } from "react-icons/fa";
 import AddToCartBar from "../../UI/Bars/AddToCartBar";
@@ -55,32 +54,40 @@ const ProductDetails = () => {
       {/* <div className="text-center uppercase font-bold">Product-Details</div> */}
       {!isLoading && !hasError && (
         <div className="flex flex-col w-[100vw] h-screen min-h-[600px] md:flex-row  min-w-[300px]">
-          <section className="text-white bg-[#f2f6f0] md:w-[50%] h-[50%] md:h-[100%] flex flex-col md:flex-row p-2  place-items-center justify-center min-h-[300px] gap-1">
+          <section className="text-white bg-[#ffffff] md:w-[50%] h-[50%] md:h-[100%] flex flex-col md:flex-row p-2  place-items-center justify-center min-h-[300px] gap-1">
             <div className="bg-[#f2f6f0] w-[100%] md:w-[80%] h-[80%] md:h-full">
               <img
                 src={display || productInfo.image[0]}
                 className="object-contain w-full h-full p-6 mix-blend-multiply "
               />
             </div>
-            <div className="flex flex-row md:flex-col w-full  md:w-[20%] h-[30%] md:h-full bg-[#f2f6f0]  justify-center items-center">
-              {productInfo?.image.map((image: any) => {
+            <div className="flex flex-row md:flex-col w-full  md:w-[20%] h-[30%] md:h-full bg-[#ffffff]  justify-center items-center">
+              {(Array.isArray(productInfo?.image)
+                ? productInfo.image
+                : [productInfo?.image]
+              ).map((image: string, index: number) => {
                 return (
-                  <div className="w-20 h-20 lg::w-30 lg:h-30 mb-2">
+                  <div
+                    key={index}
+                    className="w-20 h-20 lg:w-30 lg:h-30 mb-2 mx-2"
+                  >
                     <img
                       src={image}
-                      onClick={(e) => setDisplayImage(image)}
-                      className="w-[100%] h-[100%] object-contain mix-blend-multiply"
+                      onClick={() => setDisplayImage(image)}
+                      className="w-full h-full object-cover object-center mix-blend-multiply rounded-2xl"
                     />
                   </div>
                 );
               })}
             </div>
           </section>
-          <section className="md:w-[50%] md:flex  md:flex-col md:justify-center">
+          <section className="md:w-[50%] md:flex  md:flex-col md:justify-center box-border p-2">
             <ProductInfo productInfo={productInfo} />
             <div className="footer">
-              <h3 className="font-semibold p-1 md:text-md">size :</h3>
-              <div className="flex gap-2 p-1 text-sm place-content-center font-semibold">
+              <h3 className="font-semibold p-1 text-sm md:text-sm tracking-wider uppercase">
+                size :
+              </h3>
+              <div className="flex gap-2 p-1 text-sm font-semibold">
                 <div className="bg-[#d6e2e4] p-1 w-10 rounded-sm text-center">
                   sm
                 </div>
@@ -90,6 +97,9 @@ const ProductDetails = () => {
                 <div className="bg-[#d6e2e4] p-1 w-10 rounded-sm text-center">
                   lg
                 </div>
+              </div>
+              <div className="font-semibold p-1 text-sm md:text-sm tracking-wider uppercase">
+                Order Details :
               </div>
               <AddToCartBar />
             </div>

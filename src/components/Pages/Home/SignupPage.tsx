@@ -26,8 +26,8 @@ const SignupPage = () => {
 
   return (
     <div className="h-[100vh] w-full flex items-center justify-center">
-      <div className="w-[50%] min-w-[300px] max-w-[500px] h-[60%] flex flex-col items-center justify-center rounded-2xl shadow-2xl shadow-indigo-300 px-4">
-        <div className="font-bold text-2xl mb-10">Login</div>
+      <div className="w-[50%] min-w-[300px] max-w-[500px] h-[60%] flex flex-col items-center justify-center rounded-2xl shadow-2xl shadow-neutral-600 px-4">
+        <div className="font-bold text-2xl mb-10 text-blue-600">Login</div>
         <LoginForm onSubmit={handleLogin} loading={loading} />
       </div>
     </div>

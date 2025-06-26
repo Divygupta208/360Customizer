@@ -7,6 +7,7 @@ export type ProductCardData = {
   badge?: string;
   colors?: string[];
   rating?: { rate: number; count: number };
+  quantity?: number;
 };
 
 export type ProfileCardData = {

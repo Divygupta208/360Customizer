@@ -23,8 +23,9 @@ const RatingPanel: React.FC<RatingPanelProp> = ({ rate, count }) => {
         <FaRegStar key={`empty-${i}`} />
       ))}
 
-      <span className="text-xs md:text-md text-[#b3b6a9] ml-1">
-        ({rate}) {count} reviews
+      <span className="text-xs md:text-md text-[#404040] ml-1">({rate})</span>
+      <span className="text-xs md:text-md text-[#00941b] ml-1">
+        {count} {"reviews"}
       </span>
     </div>
   );

@@ -26,8 +26,10 @@ const ProductInfo: React.FC<ProductInfoProp> = ({ productInfo }: any) => {
           ${productInfo?.price}
         </div>
       </div>
-
-      <div className="text-sm md:text-md text-[#a4a59e] text-justify break-all  p-1 overflow-hidden">
+      <div className="uppercase  tracking-wider font-semibold text-sm ">
+        Description :
+      </div>
+      <div className="text-xs  md:text-md text-[#a4a59e] text-justify break-all  p-1 overflow-hidden">
         {productInfo?.description}
       </div>
     </>

@@ -4,14 +4,17 @@ export type Product = {
   price: number;
   description: string;
   category: string;
-  image: string[];
+  image: string[] | string;
   rating: {
     rate: number;
     count: number;
   };
   badge?: string;
   colors?: string[];
+  quantity?: number;
 };
+
+export type cartProduct = Product & { quantity: number };
 
 // export interface Product {
 //   id: number;

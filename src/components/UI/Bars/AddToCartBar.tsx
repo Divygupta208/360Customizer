@@ -9,7 +9,7 @@ const AddToCartBar = () => {
 
   return (
     <>
-      <div className="flex gap-2 mt-2 place-items-center p-1 sm:justify-center">
+      <div className="flex gap-2 mt-2 p-1">
         <div className="flex gap-2 border-2 rounded-full px-5 py-2">
           <button onClick={() => setQuantity((prev) => prev - 1)}>
             <FaMinus />
@@ -19,7 +19,7 @@ const AddToCartBar = () => {
             <FaPlus />
           </button>
         </div>
-        <button className=" rounded-full bg-[#3d3546] text-white px-8 py-2 text-nowrap">
+        <button className=" rounded bg-[#3d3546] text-white px-8 py-2 text-nowrap">
           ADD TO CART
         </button>
         <div className=" flex place-items-center justify-center text-2xl">
