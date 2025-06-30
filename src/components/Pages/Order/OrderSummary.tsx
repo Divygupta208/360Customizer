@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import type { Order } from "../../../store/ProductContext";
+import type { Order } from "../../../types/Product";
 
 const OrderSummary = () => {
   const { orderId } = useParams();
