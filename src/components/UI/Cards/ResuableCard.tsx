@@ -6,7 +6,7 @@ import type { ProductCardData, ProfileCardData } from "../../../types/Card";
 type ProductCardProps = {
   type: "product";
   data: ProductCardData;
-  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: () => void;
 
   addProductToCart?: (product: ProductCardData) => void;
 };
@@ -14,7 +14,7 @@ type ProductCardProps = {
 type ProfileCardProps = {
   type: "profile";
   data: ProfileCardData;
-  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: () => void;
 
   addProductToCart?: (product: ProductCardData) => void;
 };
@@ -30,7 +30,10 @@ const ReusableCard: React.FC<CardProps> = ({
   if (type === "product") {
     return (
       <div
-        onClick={onClick}
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick?.();
+        }}
         className="relative bg-white flex flex-col justify-between text-black border-2 border-black/10 rounded-2xl shadow-lg min-h-[380px] max-w-[300px] min-w-[300px] p-4 sm:w-[40vw] lg:w-[20vw] transition-transform hover:scale-[1.03] hover:shadow-2xl duration-300"
       >
         {data?.badge && (
@@ -72,7 +75,10 @@ const ReusableCard: React.FC<CardProps> = ({
             <CustomButton
               label="Buy Now"
               className="bg-black text-white p-2"
-              onClick={() => addProductToCart?.(data)}
+              onClick={(e) => {
+                e.stopPropagation();
+                addProductToCart?.(data);
+              }}
             />
           </div>
         </div>

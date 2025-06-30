@@ -31,8 +31,8 @@
 
 /* Scrollbar thumb (the draggable part) */
 ::-webkit-scrollbar-thumb {
-  background: #ffffff;
-  border-radius: 10px;
+  background: #000000;
+  border-radius: 5px;
 }
 
 /* Thumb on hover */
@@ -50,13 +50,11 @@ a:hover {
   color: #535bf2;
 } */
 
-/* body {
+body {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+  
+}
 /* 
 button:hover {
   border-color: #646cff;

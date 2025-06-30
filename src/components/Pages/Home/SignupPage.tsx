@@ -10,7 +10,7 @@ const SignupPage = () => {
   const auth = useContext(AuthContext);
   if (!auth) return <div>Auth context not found</div>;
 
-  const from = location.state?.from?.pathname || "/dashboard";
+  const from = location.state?.from?.pathname || "/home/dashboard";
 
   const handleLogin = async (data: LoginFormData) => {
     setLoading(true);

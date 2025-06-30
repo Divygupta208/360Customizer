@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import { FaCartShopping, FaUser, FaBars } from "react-icons/fa6";
-import { Link, Navigate, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useProductContext } from "../../../store/ProductContext";
 import { AuthContext } from "../../../store/AuthContext";
 import Breadcrumbs from "../../UI/Navigation/Breadcrumb";
@@ -60,9 +60,11 @@ const Header = () => {
             <Link to="products" className="text-gray-700 hover:text-blue-400">
               Products
             </Link>
-            <Link to="myorders" className="text-gray-700 hover:text-blue-400">
-              Orders
-            </Link>
+            {isLoggedIn && (
+              <Link to="myorders" className="text-gray-700 hover:text-blue-400">
+                Orders
+              </Link>
+            )}
             <Link
               to={isLoggedIn ? "profile" : "/login"}
               className="hover:text-blue-400"
@@ -117,9 +119,11 @@ const Header = () => {
             <Link to="products" className="text-gray-700 hover:text-blue-400">
               Products
             </Link>
-            <Link to="myorders" className="text-gray-700 hover:text-blue-400">
-              Orders
-            </Link>
+            {isLoggedIn && (
+              <Link to="myorders" className="text-gray-700 hover:text-blue-400">
+                Orders
+              </Link>
+            )}
             <Link
               to={isLoggedIn ? "profile" : "/login"}
               className="text-gray-700 hover:text-blue-400"

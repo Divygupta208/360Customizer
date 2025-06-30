@@ -8,12 +8,12 @@ import { ProductProvider } from "./store/ProductContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AuthContextProvider>
-      <ProductProvider>
+    <ProductProvider>
+      <AuthContextProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </ProductProvider>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </ProductProvider>
   </StrictMode>
 );

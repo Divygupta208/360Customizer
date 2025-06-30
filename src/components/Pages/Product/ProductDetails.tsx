@@ -1,71 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import type { Product } from "../../../data/products";
-// import { FaRegCircle } from "react-icons/fa";
 import AddToCartBar from "../../UI/Bars/AddToCartBar";
 import ProductBanner from "../../UI/Banners/ProductBanner";
 import ProductInfo from "./ProductInfo";
 import { ClipLoader } from "react-spinners";
 import { PiImageBrokenLight } from "react-icons/pi";
-
-const dummyData = {
-  id: 2,
-  title: "Mens Casual Premium Slim Fit T-Shirts ",
-  price: 22.3,
-  description:
-    "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-  category: "men's clothing",
-  image: [
-    "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-    "https://images.pexels.com/photos/32638318/pexels-photo-32638318.jpeg",
-    "https://images.pexels.com/photos/2229712/pexels-photo-2229712.jpeg",
-  ],
-  rating: { rate: 4.1, count: 259 },
-};
+import { fetchProductInfo } from "../../../api/ProductServices/services";
+import type { Product } from "../../../types/Product";
 
 const ProductDetails = () => {
   const { productId } = useParams();
-  const [productInfo, setProductInfo] = useState<Product>(dummyData);
+  const [productInfo, setProductInfo] = useState<Product>();
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [display, setDisplayImage] = useState("");
 
-  // useEffect(() => {
-  //   fetchProductDetails();
-  // }, []);
+  useEffect(() => {
+    fetchProductDetails();
+  }, []);
 
-  // const fetchProductDetails = async () => {
-  //   setIsLoading(true);
-  //   setTimeout(() => {}, 2000);
-  //   try {
-  //     // throw "Error";
-  //     const product = await fetchProductInfo(productId);
-  //     setProductInfo(product);
-  //   } catch (error) {
-  //     await new Promise((resolve) => setTimeout(resolve, 500));
-  //     setHasError(true);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const fetchProductDetails = async () => {
+    setIsLoading(true);
+    setTimeout(() => {}, 2000);
+    try {
+      // throw "Error";
+      const product = await fetchProductInfo(productId);
+      setProductInfo(product);
+      console.log(product);
+    } catch (error) {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      setHasError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
-      {/* <div className="text-center uppercase font-bold">Product-Details</div> */}
       {!isLoading && !hasError && (
         <div className="flex flex-col w-[100vw] h-screen min-h-[600px] md:flex-row  min-w-[300px]">
           <section className="text-white bg-[#ffffff] md:w-[50%] h-[50%] md:h-[100%] flex flex-col md:flex-row p-2  place-items-center justify-center min-h-[300px] gap-1">
             <div className="bg-[#f2f6f0] w-[100%] md:w-[80%] h-[80%] md:h-full">
               <img
-                src={display || productInfo.image[0]}
-                className="object-contain w-full h-full p-6 mix-blend-multiply "
+                src={Array.isArray(display) ? display[0] : productInfo?.image}
+                className="object-contain w-full h-full p-6 mix-blend-multiply"
               />
             </div>
             <div className="flex flex-row md:flex-col w-full  md:w-[20%] h-[30%] md:h-full bg-[#ffffff]  justify-center items-center">
               {(Array.isArray(productInfo?.image)
                 ? productInfo.image
                 : [productInfo?.image]
-              ).map((image: string, index: number) => {
+              ).map((image, index) => {
                 return (
                   <div
                     key={index}
@@ -73,7 +58,7 @@ const ProductDetails = () => {
                   >
                     <img
                       src={image}
-                      onClick={() => setDisplayImage(image)}
+                      onClick={() => setDisplayImage(image ?? "")}
                       className="w-full h-full object-cover object-center mix-blend-multiply rounded-2xl"
                     />
                   </div>
@@ -126,7 +111,7 @@ const ProductDetails = () => {
           <button
             onClick={() => {
               setHasError(false);
-              // fetchProductDetails();
+              fetchProductDetails();
             }}
             className="bg-red-500 font-bold text-white rounded-lg mt-4 w-20 h-15"
           >

@@ -1,14 +1,22 @@
 import { Link } from "react-router";
-import type { Order } from "../../../store/ProductContext";
+import type { Order } from "../../../types/Product";
 
 const MyOrders = () => {
   const orders = JSON.parse(localStorage.getItem("orders") || "[]");
 
   return (
-    <div className="p-8 h-[70vh]">
-      <h1 className="text-2xl font-bold mb-4">My Orders</h1>
+    <div className="p-8 h-[70vh] overflow-scroll">
+      <p className="text-2xl font-bold mb-4">My Orders</p>
       {orders.length === 0 ? (
-        <p>No orders yet.</p>
+        <div className="flex flex-col gap-3 font-semibold md:text-2xl justify-center items-center">
+          <p> No orders yet</p>
+          <Link
+            to={"/home/products"}
+            className="bg-black text-white p-2 rounded"
+          >
+            Explore Now
+          </Link>
+        </div>
       ) : (
         orders.map((order: Order) => (
           <div key={order.orderId} className="border-b py-4">
